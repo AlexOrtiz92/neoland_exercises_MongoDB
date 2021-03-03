@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "type": "Planta"
+  },
+  {
+    "id": 2,
+    "name": "Squirtle",
+    "type": "Agua"
+  },
+  {
+    "id": 3,
+    "name": "Pidgeotto",
+    "type": "dragon"
+  },
+  {
+    "id": 4,
+    "name": "mew",
+    "type": "normal"
+  },
+  {
+    "id": 5,
+    "name": "charmeleon",
+    "type": "fuego"
+  },
+  {
+    "id": 6,
+    "name": "Charizard",
+    "type": "fuego"
+  },
+  {
+    "id": 7,
+    "name": "Wartortle",
+    "type": "agua"
+  },
+  {
+    "id": 8,
+    "name": "Blastoise",
+    "type": "agua"
+  },
+  {
+    "id": 9,
+    "name": "Venusaur",
+    "type": "planta"
+  },
+  {
+    "id": 10,
+    "name": "Ivysaur",
+    "type": "planta"
+  },
+  {
+    "id": 11,
+    "name": "Raichu",
+    "type": "electrico"
+  },
+  {
+    "id": 12,
+    "name": "Dratini",
+    "type": "dragon"
+  },
+  {
+    "id": 13,
+    "name": "Dragonair",
+    "type": "dragon"
+  },
+  {
+    "id": 14,
+    "name": "Dragonite",
+    "type": "dragon"
+  },
+  {
+    "id": 15,
+    "name": "Machop",
+    "type": "lucha"
+  },
+  {
+    "id": 16,
+    "name": "Machoke",
+    "type": "lucha"
+  },
+  {
+    "id": 17,
+    "name": "Machamp",
+    "type": "lucha"
+  },
+  {
+    "id": 18,
+    "name": "Voltorb",
+    "type": "Electrico"
+  },
+  {
+    "id": 19,
+    "name": "Starmie",
+    "type": "agua"
+  },
+  {
+    "id": 20,
+    "name": "Staryu",
+    "type": "agua"
+  },
+  {
+    "id": 21,
+    "name": "Mewtwo",
+    "type": "Psiquico"
+  },
+  {
+    "id": 22,
+    "name": "Chicorita",
+    "type": "Planta"
+  },
+  {
+    "id": 23,
+    "name": "Ditto",
+    "type": "normal"
+  },
+  {
+    "id": 24,
+    "name": "Bloom",
+    "type": "Planta"
+  },
+  {
+    "id": 25,
+    "name": "Ditto",
+    "type": "tierra"
+  },
+  {
+    "id": 26,
+    "name": "Caterpie",
+    "type": "bicho"
+  },
+  {
+    "id": 27,
+    "name": "Metapod",
+    "type": "bicho"
+  },
+  {
+    "id": 28,
+    "name": "Butterfree",
+    "type": "bicho"
+  },
+  {
+    "id": 29,
+    "name": "Wedle",
+    "type": "bicho"
+  },
+  {
+    "id": 30,
+    "name": "Kakuna",
+    "type": "bicho"
+  },
+  {
+    "id": 31,
+    "name": "Beedril",
+    "type": "bicho"
+  },
+  {
+    "id": 32,
+    "name": "Raykuaza",
+    "type": "Dragon"
+  },
+  {
+    "id": 33,
+    "name": "Lugia",
+    "type": "Psiquico/Volador"
+  },
+  {
+    "id": 34,
+    "name": "Ho-oh",
+    "type": "Fuego/Volador"
+  }
+]

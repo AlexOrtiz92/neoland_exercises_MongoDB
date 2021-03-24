@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/home.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container  text-center">
+    <div class="container d-flex justify-content-center">
+      <h1>Chat Terra</h1>
+      <img src="chat.svg" alt="Chat Terra Icon" width="150">
+    </div>
+    <br>
+    <form>
+      <div class="d-flex justify-content-center">
+        <div class="form-group d-flex flex-column  col-4 ">
+          <label class="elige" for="nick">Elige un nick...</label>
+          <input type="nick" class="form-control" id="nick" placeholder="Manolo69" onkeypress="keyPress(event)">
+        </div>
+      </div>
+
+      <button id="login" type="button" class="btn btn-info">Entra!</button>
+
+    </form>
+  </div>
+</body>
+
+</html>

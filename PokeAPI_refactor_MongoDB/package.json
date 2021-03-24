@@ -1,22 +1,15 @@
 {
-  "name": "pokeapi",
+  "name": "pokeapi_refactor_mongodb",
   "version": "1.0.0",
-  "description": "API de Pokemon",
+  "description": "Se han creado dos archivos api.js, uno con el metodo POST por parametros (QUERY PARAMS) y otro con el metodo POST mediante body.",
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AlexOrtiz92/neoland_exercises_nodejs.git"
-  },
-  "author": "Alejandro Ortiz",
+  "author": "AOO",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AlexOrtiz92/neoland_exercises_nodejs/issues"
-  },
-  "homepage": "https://github.com/AlexOrtiz92/neoland_exercises_nodejs#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
   }
 }

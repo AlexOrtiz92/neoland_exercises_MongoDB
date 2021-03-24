@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/socket.io.js"></script>
+  <script src="js/chat.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="container d-flex justify-content-center">
+    <h1>Chat Terra</h1>
+    <img src="chat.svg" alt="Chat Terra Icon" width="150">
+  </div>
+  <div class="container-text">
+    <!-- La lista de mensajes -->
+    <div class="text-box text-center ">
+      <ul id="ulMessages" class="ul-message">
+
+      </ul>
+    </div>
+    <br>
+    <div class="form-group d-flex flex-column  col-4 ">
+      <input id="inputMessage" type="text" onkeypress="keyPress(event)" placeholder="Escribir mensaje"
+        class="form-control">
+    </div>
+    <button id="buttonMessage" type="button" class="btn btn-info">Enviar</button>
+
+  </div>
+  sp
+</body>
+
+</html>

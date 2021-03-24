@@ -16,4 +16,5 @@ const restSchema = new Schema({
 );
 
 
+
 module.exports = mongoose.model("restaurants", restSchema);

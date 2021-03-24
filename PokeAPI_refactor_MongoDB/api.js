@@ -1,10 +1,10 @@
-//ESTE JS SE HACE POST POR EL BODY
 
-const express = require("express");
-const fs = require("fs");
-
+const express = require("express")
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose")
 
+
+const PokemonList = require("./models/listado")
 const api = express();
 
 
@@ -36,148 +36,83 @@ api.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(express.urlencoded({ extended: true })); TAMBIEN PUEDE USARSE A TRAVES DE EXPRESS
 
+//realizo la conexion con la base de datos
+mongoose.connect("mongodb://localhost/POKEMON", { useNewUrlParser: true, useUnifiedTopology: true }, (err, response) => {
+  if (err) {
+    console.error(err, "error al conectar con la BBDD")
+  } else {
+    console.log("BBDD de pokemon conectada")
+  }
+})
+
+
 //GET
 
 api.get("/api/pokemon", (request, response) => {
-  fs.readFile("db/dbPokemon.json", (err, data) => {
-    if (err) throw err; //elevar o notificar una excepcion
-    const allPokemon = JSON.parse(data); //parseamos el contenido del fichero a JSON
-    response.status(200).send({
-      succes: true,
-      message: "/api/pokemon",
-      method: "GET",
-      pokemon: allPokemon,
-    });
-  });
+
+  PokemonList.find((err, data) => {
+    if (err) {
+      console.error(err)
+    } else {
+      response.send(data)
+    }
+  })
 });
 
-//2 formas de hacer POST:
-//POST por el body
 
-//POST pot parametros "api/pokemon?name=pikachu&type=electrico"
+
+//POST
+
 
 api.post("/api/pokemon", (request, response) => {
-  // si nos faltara algun dato obligatorio, lo gestionamos de esta manera para que no haga nada
 
-  if (!request.body.name || !request.body.type) {
-    response.status(200).send({
-      succes: false,
-      url: "/api/pokemon",
-      method: "POST",
-      message: "name and type are required",
-    });
-  } else {
-    //request.query tenemos los valores de la querystring
-    // 1. Creamos el nuevo pokemon obteniendo los datos de request.query
-    // 2. conseguimos el Array
-    // 3. pusheamos el objeto en el array
-    // 4. introducimos el array con el nuevo DataTransferItem, parseando el array con JSON.stringify(array)
-    // 5. si todo ha ido BiquadFilterNode, respondemos con un mensaje ok
+  const { name, type } = request.body
 
-    fs.readFile("db/dbPokemon.json", (err, data) => {
-      const allPokemon = JSON.parse(data);
 
-      //configuramos el ID
-      let idPokemon = 0
 
-      if (allPokemon[allPokemon.length - 1] == null) {
+  PokemonList.find(null, { id: 1, _id: 0 }).sort({ id: -1 }).limit(1).exec((err, data) => {
+    if (err) {
+      console.error(err)
+    } else {
 
-        idPokemon = 1
-      } else {
-        idPokemon = allPokemon[allPokemon.length - 1].id + 1
-      }
+      const newPok = new PokemonList({
+        id: data[0].id + 1,
+        name,
+        type
+      })
 
-      const newPok = {
-        id: idPokemon,
-        name: request.body.name,
-        type: request.body.type,
-      };
-
-      allPokemon.push(newPok);
-
-      fs.writeFile("db/dbPokemon.json", JSON.stringify(allPokemon), (err) => {
+      newPok.save((err) => {
         if (err) {
-          response.status(400).send({
-            succes: false,
-            url: "/api/pokemon",
-            method: "POST",
-            message: "fallo al añadir el pokemon",
-          });
+          console.error(err)
         } else {
-          response.status(201).send({
-            succes: true,
-            url: "/api/pokemon",
-            method: "POST",
+          response.send({
             message: "pokemon añadido correctamente",
-          });
+            pokemon: newPok
+          })
         }
-      });
-    });
-  }
-});
+      })
+    }
+  })
+})
+
 
 //DELETE
+
 api.delete("/api/pokemon", (request, response) => {
 
-  if (!request.body.id) {
-    response.status(200).send({
-      succes: false,
-      url: "/api/pokemon",
-      method: "DELETE",
-      message: "id or name is required",
-    });
-  } else {
+  const { _id } = request.body
 
-    fs.readFile("db/dbPokemon.json", (err, data) => {
-
-      //con NAME
-
-      // const allPokemon = JSON.parse(data);
-      // const name = request.body.name;
-
-      // const newAllPok = allPokemon
-      //   .map((value) => {
-      //     if (value.name !== name) {
-      //       return value;
-      //     }
-      //   })
-      //   .filter((value) => value != null);
-
-
-      // con ID
-
-      const allPokemon = JSON.parse(data);
-      const id = request.body.id;
-
-      const newAllPok = allPokemon
-        .map((value) => {
-          if (`${value.id}` !== id) {
-            return value;
-          }
-        })
-        .filter((value) => value != null);
-
-      fs.writeFile("db/dbPokemon.json", JSON.stringify(newAllPok), (err) => {
-        if (err) {
-          response.status(400).send({
-            succes: false,
-            url: "/api/pokemon",
-            method: "DELETE",
-            message: "fallo al eliminar el pokemon",
-          });
-        } else {
-          response.status(201).send({
-            succes: true,
-            url: "/api/pokemon",
-            method: "DELETE",
-            message: "pokemon eliminado correctamente",
-          });
-        }
-      });
-    });
-  }
-});
-
+  PokemonList.findByIdAndDelete(_id, (err, data) => {
+    if (err) {
+      console.error(err)
+    } else {
+      response.send({
+        message: "pokemon eliminado correctamente",
+        idi: _id
+      })
+    }
+  })
+})
 
 
 //GET ONE (query params)
@@ -452,9 +387,6 @@ api.get("/api/pokemons/:pokemonID/location/:locationID", (request, response) => 
     }
   })
 })
-
-
-
 
 
 
